@@ -21,6 +21,7 @@
 		027D4D64182EAF0200AFDD21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027D4D46182EAF0200AFDD21 /* UIKit.framework */; };
 		027D4D6C182EAF0200AFDD21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 027D4D6A182EAF0200AFDD21 /* InfoPlist.strings */; };
 		027D4D6E182EAF0200AFDD21 /* PoliceCrimeMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027D4D6D182EAF0200AFDD21 /* PoliceCrimeMapTests.m */; };
+		027D4D7A182EB17400AFDD21 /* CrimeMapFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 027D4D79182EB17400AFDD21 /* CrimeMapFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		027D4D69182EAF0200AFDD21 /* PoliceCrimeMapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PoliceCrimeMapTests-Info.plist"; sourceTree = "<group>"; };
 		027D4D6B182EAF0200AFDD21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		027D4D6D182EAF0200AFDD21 /* PoliceCrimeMapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceCrimeMapTests.m; sourceTree = "<group>"; };
+		027D4D78182EB17400AFDD21 /* CrimeMapFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrimeMapFetcher.h; path = Model/CrimeMapFetcher.h; sourceTree = "<group>"; };
+		027D4D79182EB17400AFDD21 /* CrimeMapFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrimeMapFetcher.m; path = Model/CrimeMapFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +115,7 @@
 		027D4D48182EAF0200AFDD21 /* PoliceCrimeMap */ = {
 			isa = PBXGroup;
 			children = (
-				027D4D51182EAF0200AFDD21 /* CrimeMapAppDelegate.h */,
-				027D4D52182EAF0200AFDD21 /* CrimeMapAppDelegate.m */,
+				027D4D77182EB12500AFDD21 /* Model */,
 				027D4D54182EAF0200AFDD21 /* Main.storyboard */,
 				027D4D57182EAF0200AFDD21 /* CrimeMapViewController.h */,
 				027D4D58182EAF0200AFDD21 /* CrimeMapViewController.m */,
@@ -126,6 +128,8 @@
 		027D4D49182EAF0200AFDD21 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				027D4D51182EAF0200AFDD21 /* CrimeMapAppDelegate.h */,
+				027D4D52182EAF0200AFDD21 /* CrimeMapAppDelegate.m */,
 				027D4D4A182EAF0200AFDD21 /* PoliceCrimeMap-Info.plist */,
 				027D4D4B182EAF0200AFDD21 /* InfoPlist.strings */,
 				027D4D4E182EAF0200AFDD21 /* main.m */,
@@ -150,6 +154,15 @@
 				027D4D6A182EAF0200AFDD21 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		027D4D77182EB12500AFDD21 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				027D4D78182EB17400AFDD21 /* CrimeMapFetcher.h */,
+				027D4D79182EB17400AFDD21 /* CrimeMapFetcher.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +213,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = SurfTrack;
 				TargetAttributes = {
+					027D4D3E182EAF0200AFDD21 = {
+						DevelopmentTeam = D4QBQF6Z9N;
+					};
 					027D4D5F182EAF0200AFDD21 = {
 						TestTargetID = 027D4D3E182EAF0200AFDD21;
 					};
@@ -253,6 +269,7 @@
 				027D4D59182EAF0200AFDD21 /* CrimeMapViewController.m in Sources */,
 				027D4D53182EAF0200AFDD21 /* CrimeMapAppDelegate.m in Sources */,
 				027D4D4F182EAF0200AFDD21 /* main.m in Sources */,
+				027D4D7A182EB17400AFDD21 /* CrimeMapFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PoliceCrimeMap/PoliceCrimeMap-Prefix.pch";
 				INFOPLIST_FILE = "PoliceCrimeMap/PoliceCrimeMap-Info.plist";
@@ -392,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PoliceCrimeMap/PoliceCrimeMap-Prefix.pch";
 				INFOPLIST_FILE = "PoliceCrimeMap/PoliceCrimeMap-Info.plist";
