@@ -38,31 +38,34 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-	// Check if the location data is of type CLLocation
-	if ([[locations firstObject] isKindOfClass:[CLLocation class]]) {
-		// Get the location
-		CLLocation *location = [locations firstObject];
-		
-		// Dispatch the API request onto another thread
-		dispatch_queue_t crimeMapFetcher = dispatch_queue_create("crime map fetcher", NULL);
-		dispatch_async(crimeMapFetcher, ^{
-			// Get the crime data from Police Uk
-			[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-			self.crimeLocationData = [CrimeMapFetcher crimesForLocation:location];
-			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-			// Get back on the main thread
-			dispatch_async(dispatch_get_main_queue(), ^{
-				// Do something with the data
-				for (NSDictionary *location in self.crimeLocationData) {
-					MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-					point.coordinate = CLLocationCoordinate2DMake([[location valueForKeyPath:@"location.latitude"] doubleValue], [[location valueForKeyPath:@"location.longitude"] doubleValue]);
-					point.title = [location valueForKeyPath:@"category"];
-					point.subtitle = [[location valueForKeyPath:@"persistent_id"] description];
-					// Add the annotation to the map
-					[self.mapView addAnnotation:point];
-				}
+	// Check if data is already set
+	if (!self.crimeLocationData) {
+		// Check if the location data is of type CLLocation
+		if ([[locations firstObject] isKindOfClass:[CLLocation class]]) {
+			// Get the location
+			CLLocation *location = [locations firstObject];
+			
+			// Dispatch the API request onto another thread
+			dispatch_queue_t crimeMapFetcher = dispatch_queue_create("crime map fetcher", NULL);
+			dispatch_async(crimeMapFetcher, ^{
+				// Get the crime data from Police Uk
+				[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+				self.crimeLocationData = [CrimeMapFetcher crimesForLocation:location];
+				[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+				// Get back on the main thread
+				dispatch_async(dispatch_get_main_queue(), ^{
+					// Do something with the data
+					for (NSDictionary *location in self.crimeLocationData) {
+						MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+						point.coordinate = CLLocationCoordinate2DMake([[location valueForKeyPath:@"location.latitude"] doubleValue], [[location valueForKeyPath:@"location.longitude"] doubleValue]);
+						point.title = [location valueForKeyPath:@"category"];
+						point.subtitle = [[location valueForKeyPath:@"persistent_id"] description];
+						// Add the annotation to the map
+						[self.mapView addAnnotation:point];
+					}
+				});
 			});
-		});
+		}
 	}
 	
 	// Stop getting the location of the device
@@ -71,6 +74,7 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+	// Set the map region
 	CLLocationCoordinate2D location = [userLocation coordinate];
 	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 500, 500);
 	[self.mapView setRegion:region];
