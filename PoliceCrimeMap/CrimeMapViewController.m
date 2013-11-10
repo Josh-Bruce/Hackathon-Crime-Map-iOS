@@ -22,14 +22,19 @@
 	return _locationManager;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-	[super viewWillAppear:animated];
-	
+	[super viewDidLoad];
 	// Set overselves to be the map delegate
 	self.mapView.delegate = self;
 	// Set ourselves as the delegate
 	self.locationManager.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
 	// Best accuracy
 	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 	// Start updating the location
@@ -77,9 +82,11 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
 	// Set the map region
-	CLLocationCoordinate2D location = [userLocation coordinate];
-	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 500, 500);
-	[self.mapView setRegion:region];
+	if (mapView.userLocation != userLocation) {
+		CLLocationCoordinate2D location = [userLocation coordinate];
+		MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 500, 500);
+		[self.mapView setRegion:region];
+	}
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -87,11 +94,15 @@
 	// If the annotation is not our location
 	if (annotation != mapView.userLocation) {
 		// Create an annotation with a detail view
-		MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
-		annotationView.canShowCallout = YES;
-		annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+		if ([annotation subtitle].length) {
+			MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
+			annotationView.canShowCallout = YES;
+			annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+			
+			return annotationView;
+		}
 		
-		return annotationView;
+		return nil;
 	}
 	
 	return nil;

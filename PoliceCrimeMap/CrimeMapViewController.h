@@ -15,6 +15,6 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSDictionary *crimeLocationData;
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) IBOutlet MKMapView *mapView;
 
 @end
