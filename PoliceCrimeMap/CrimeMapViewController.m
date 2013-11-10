@@ -17,6 +17,7 @@
 
 - (CLLocationManager *)locationManager
 {
+	// Lazy instanciation
 	if (!_locationManager) _locationManager = [[CLLocationManager alloc] init];
 	return _locationManager;
 }
@@ -27,16 +28,6 @@
 	
 	// Set overselves to be the map delegate
 	self.mapView.delegate = self;
-	// Set ourselves as the delegate
-	self.locationManager.delegate = self;
-	// Best accuracy
-	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-	// Start updating the location
-	[self.locationManager startUpdatingLocation];
-}
-
-- (IBAction)getLocation:(UIButton *)sender
-{
 	// Set ourselves as the delegate
 	self.locationManager.delegate = self;
 	// Best accuracy
@@ -87,15 +78,22 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-	MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
-    annotationView.canShowCallout = YES;
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+	// If the annotation is not our location
+	if (annotation != mapView.userLocation) {
+		// Create an annotation with a detail view
+		MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
+		annotationView.canShowCallout = YES;
+		annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+		
+		return annotationView;
+	}
 	
-    return annotationView;
+	return nil;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
+	// Perform segue upon selection of accessory view
     [self performSegueWithIdentifier:@"detailCrime" sender:view];
 }
 
@@ -106,6 +104,7 @@
 			CrimeDetailViewController *cmvc = (CrimeDetailViewController *)segue.destinationViewController;
 			if ([sender isKindOfClass:[MKAnnotationView class]]) {
 				MKAnnotationView *aView = sender;
+				// Get the id of the crime and send it to the crime detail view
 				cmvc.crimeId = [[aView annotation] subtitle];
 			}
 		}
