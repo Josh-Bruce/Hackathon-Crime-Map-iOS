@@ -82,11 +82,9 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
 	// Set the map region
-	if (mapView.userLocation != userLocation) {
-		CLLocationCoordinate2D location = [userLocation coordinate];
-		MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 500, 500);
-		[self.mapView setRegion:region];
-	}
+	CLLocationCoordinate2D location = [userLocation coordinate];
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 500, 500);
+	[self.mapView setRegion:region];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
