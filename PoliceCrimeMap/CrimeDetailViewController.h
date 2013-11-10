@@ -15,5 +15,8 @@
 @property (strong, nonatomic) NSDictionary *crime;
 
 @property (weak, nonatomic) IBOutlet UITextView *outcomeTextView;
+@property (weak, nonatomic) IBOutlet UITextView *categoryTextView;
+@property (weak, nonatomic) IBOutlet UITextView *dateTextView;
+@property (weak, nonatomic) IBOutlet UITextView *locationTextView;
 
 @end

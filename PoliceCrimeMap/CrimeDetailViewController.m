@@ -19,8 +19,7 @@
 	[super viewWillAppear:animated];
 	
 	// Get the crime
-	[self getCrimeWithId];
-	
+	if (self.crimeId) [self getCrimeWithId];
 }
 
 - (void)getCrimeWithId
@@ -41,10 +40,13 @@
 
 - (void)updateUI
 {
-	//self.outcomeLabel.text = [self.crime valueForKeyPath:@"outcomes.category.name"];
+	// Update the UI
 	for (NSArray *array in [self.crime objectForKey:@"outcomes"]) {
 		self.outcomeTextView.text = [self.outcomeTextView.text stringByAppendingString:[NSString stringWithFormat:@"%@\n", [[array valueForKeyPath:@"category.name"] description]]];
 	}
+	self.categoryTextView.text = [[self.crime valueForKeyPath:@"crime.category"] description];
+	self.dateTextView.text = [[self.crime valueForKeyPath:@"crime.month"] description];
+	self.locationTextView.text = [[self.crime valueForKeyPath:@"crime.location.street.name"] description];
 }
 
 @end
