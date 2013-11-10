@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CrimeMapFetcher.h"
 
-@interface CrimeMapViewController : UIViewController
+@import MapKit;
+
+@interface CrimeMapViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSDictionary *crimeLocationData;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

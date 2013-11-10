@@ -10,10 +10,14 @@
 
 @import CoreLocation;
 
-#define NSLOG_POLICE YES
+#define NSLOG_POLICE NO
 
 @interface CrimeMapFetcher : NSObject
 
+// Get all crimes withing locations
 + (NSDictionary *)crimesForLocation:(CLLocation *)location;
+
+// Get crime with ID
++ (NSDictionary *)crimeForId:(NSString *)crimId;
 
 @end

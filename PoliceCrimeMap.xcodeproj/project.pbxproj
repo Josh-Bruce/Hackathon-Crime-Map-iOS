@@ -22,6 +22,9 @@
 		027D4D6C182EAF0200AFDD21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 027D4D6A182EAF0200AFDD21 /* InfoPlist.strings */; };
 		027D4D6E182EAF0200AFDD21 /* PoliceCrimeMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027D4D6D182EAF0200AFDD21 /* PoliceCrimeMapTests.m */; };
 		027D4D7A182EB17400AFDD21 /* CrimeMapFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 027D4D79182EB17400AFDD21 /* CrimeMapFetcher.m */; };
+		027D4D7C182EC83900AFDD21 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027D4D7B182EC83900AFDD21 /* CoreLocation.framework */; };
+		027D4D7E182EC84500AFDD21 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027D4D7D182EC84500AFDD21 /* MapKit.framework */; };
+		027D4D81182EECAD00AFDD21 /* CrimeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027D4D80182EECAD00AFDD21 /* CrimeDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,10 @@
 		027D4D6D182EAF0200AFDD21 /* PoliceCrimeMapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceCrimeMapTests.m; sourceTree = "<group>"; };
 		027D4D78182EB17400AFDD21 /* CrimeMapFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrimeMapFetcher.h; path = Model/CrimeMapFetcher.h; sourceTree = "<group>"; };
 		027D4D79182EB17400AFDD21 /* CrimeMapFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrimeMapFetcher.m; path = Model/CrimeMapFetcher.m; sourceTree = "<group>"; };
+		027D4D7B182EC83900AFDD21 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		027D4D7D182EC84500AFDD21 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		027D4D7F182EECAD00AFDD21 /* CrimeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrimeDetailViewController.h; sourceTree = "<group>"; };
+		027D4D80182EECAD00AFDD21 /* CrimeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrimeDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027D4D7E182EC84500AFDD21 /* MapKit.framework in Frameworks */,
+				027D4D7C182EC83900AFDD21 /* CoreLocation.framework in Frameworks */,
 				027D4D45182EAF0200AFDD21 /* CoreGraphics.framework in Frameworks */,
 				027D4D47182EAF0200AFDD21 /* UIKit.framework in Frameworks */,
 				027D4D43182EAF0200AFDD21 /* Foundation.framework in Frameworks */,
@@ -104,6 +113,8 @@
 		027D4D41182EAF0200AFDD21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				027D4D7D182EC84500AFDD21 /* MapKit.framework */,
+				027D4D7B182EC83900AFDD21 /* CoreLocation.framework */,
 				027D4D42182EAF0200AFDD21 /* Foundation.framework */,
 				027D4D44182EAF0200AFDD21 /* CoreGraphics.framework */,
 				027D4D46182EAF0200AFDD21 /* UIKit.framework */,
@@ -117,6 +128,8 @@
 			children = (
 				027D4D77182EB12500AFDD21 /* Model */,
 				027D4D54182EAF0200AFDD21 /* Main.storyboard */,
+				027D4D7F182EECAD00AFDD21 /* CrimeDetailViewController.h */,
+				027D4D80182EECAD00AFDD21 /* CrimeDetailViewController.m */,
 				027D4D57182EAF0200AFDD21 /* CrimeMapViewController.h */,
 				027D4D58182EAF0200AFDD21 /* CrimeMapViewController.m */,
 				027D4D5A182EAF0200AFDD21 /* Images.xcassets */,
@@ -267,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027D4D59182EAF0200AFDD21 /* CrimeMapViewController.m in Sources */,
+				027D4D81182EECAD00AFDD21 /* CrimeDetailViewController.m in Sources */,
 				027D4D53182EAF0200AFDD21 /* CrimeMapAppDelegate.m in Sources */,
 				027D4D4F182EAF0200AFDD21 /* main.m in Sources */,
 				027D4D7A182EB17400AFDD21 /* CrimeMapFetcher.m in Sources */,
