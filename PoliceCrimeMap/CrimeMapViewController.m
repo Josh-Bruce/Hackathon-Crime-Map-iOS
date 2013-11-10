@@ -56,12 +56,14 @@
 				dispatch_async(dispatch_get_main_queue(), ^{
 					// Do something with the data
 					for (NSDictionary *location in self.crimeLocationData) {
-						MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-						point.coordinate = CLLocationCoordinate2DMake([[location valueForKeyPath:@"location.latitude"] doubleValue], [[location valueForKeyPath:@"location.longitude"] doubleValue]);
-						point.title = [location valueForKeyPath:@"category"];
-						point.subtitle = [[location valueForKeyPath:@"persistent_id"] description];
-						// Add the annotation to the map
-						[self.mapView addAnnotation:point];
+						if (![[self.mapView annotations] containsObject:location]) {
+							MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+							point.coordinate = CLLocationCoordinate2DMake([[location valueForKeyPath:@"location.latitude"] doubleValue], [[location valueForKeyPath:@"location.longitude"] doubleValue]);
+							point.title = [location valueForKeyPath:@"category"];
+							point.subtitle = [[location valueForKeyPath:@"persistent_id"] description];
+							// Add the annotation to the map
+							[self.mapView addAnnotation:point];
+						}
 					}
 				});
 			});

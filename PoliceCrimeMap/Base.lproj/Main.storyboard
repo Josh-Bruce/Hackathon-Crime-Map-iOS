@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-gc-Vqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="78"/>
+            <point key="canvasLocation" x="1260" y="78"/>
         </scene>
         <!--Crime Detail View Controller - Specific Crime-->
         <scene sceneID="g4d-7F-Q3n">
@@ -70,7 +70,7 @@
                                 <rect key="frame" x="113" y="138" width="187" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Date" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vde-MH-Az5">
@@ -105,9 +105,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Specific Crime" id="sM6-QH-4a9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="gPo-8Y-r3e"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Specific Crime" id="sM6-QH-4a9"/>
                     <connections>
                         <outlet property="categoryTextView" destination="42C-fw-syn" id="Oui-SN-fEs"/>
                         <outlet property="dateTextView" destination="fZn-e3-G2z" id="IWV-ou-dwm"/>
